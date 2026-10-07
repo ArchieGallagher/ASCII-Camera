@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 
+ascii_characters = ".:-=+*#%@"
+
 
 def img_downscaler(current_frame):
     current_frame_downscaled = cv2.resize(
@@ -20,7 +22,6 @@ def get_current_frame_array(n, video):
 
 
 def get_brightness_ascii(b, g, r):
-    ascii_characters = ".:-=+*#%@"
     brightness = (0.114 * (b / 255)) + (0.587 * (g / 255)) + (0.299 * (r / 255))
     if brightness <= 0.11:
         return f"{ascii_characters[0]}"
