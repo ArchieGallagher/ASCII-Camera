@@ -23,24 +23,8 @@ def get_current_frame_array(n, video):
 
 def get_brightness_ascii(b, g, r):
     brightness = (0.114 * (b / 255)) + (0.587 * (g / 255)) + (0.299 * (r / 255))
-    if brightness <= 0.11:
-        return f"{ascii_characters[0]}"
-    elif brightness <= 0.22:
-        return f"{ascii_characters[1]}"
-    elif brightness <= 0.33:
-        return f"{ascii_characters[2]}"
-    elif brightness <= 0.44:
-        return f"{ascii_characters[3]}"
-    elif brightness <= 0.55:
-        return f"{ascii_characters[4]}"
-    elif brightness <= 0.66:
-        return f"{ascii_characters[5]}"
-    elif brightness <= 0.77:
-        return f"{ascii_characters[6]}"
-    elif brightness <= 0.88:
-        return f"{ascii_characters[7]}"
-    else:
-        return f"{ascii_characters[8]}"
+    index = int(brightness * len(ascii_characters))
+    return ascii_characters[min(index, len(ascii_characters) - 1)]
 
 
 def main():
