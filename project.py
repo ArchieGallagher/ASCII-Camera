@@ -31,7 +31,6 @@ def main():
     # INPUT
     video_file_path = input("Enter the path to your file>>> ")
     video = cv2.VideoCapture(f"{video_file_path}")
-    # Might need to do some error handling here.
     if not video.isOpened():
         raise ValueError(f"Could not open video: {video_file_path}")
 
