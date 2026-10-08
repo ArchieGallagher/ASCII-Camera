@@ -3,13 +3,11 @@ import numpy as np
 
 ascii_characters = ".:-=+*#%@"
 
-
 def img_downscaler(current_frame):
     current_frame_downscaled = cv2.resize(
         current_frame, (120, 60), interpolation=cv2.INTER_AREA
     )
     return current_frame_downscaled
-
 
 def get_current_frame_array(n, video):
     video.set(cv2.CAP_PROP_POS_FRAMES, n)
@@ -20,12 +18,10 @@ def get_current_frame_array(n, video):
     else:
         return frame_image
 
-
 def get_brightness_ascii(b, g, r):
     brightness = (0.114 * (b / 255)) + (0.587 * (g / 255)) + (0.299 * (r / 255))
     index = int(brightness * len(ascii_characters))
     return ascii_characters[min(index, len(ascii_characters) - 1)]
-
 
 def main():
     # INPUT
@@ -76,7 +72,6 @@ def main():
         writer.write(canvas)
         canvas[:] = 0
     writer.release()
-
 
 if __name__ == "__main__":
     main()
